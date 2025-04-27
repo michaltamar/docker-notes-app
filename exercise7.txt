@@ -1,0 +1,25 @@
+1. Dockerfile (Original):  
+   - The original Dockerfile used for the application before optimization.
+
+2. Optimized Dockerfile:  
+   - A multi-stage build was implemented to make the image smaller and more efficient.  
+   - Added a health check to ensure the application is running correctly.
+
+3. .dockerignore file:  
+   - Created a `.dockerignore` file to exclude unnecessary files (such as Python bytecode, logs, IDE configuration files, etc.) and improve build speed.
+
+4. Commands used:  
+   - `docker build -t docker-notes-app .`  
+   - `docker run -d -p 5001:5000 -v notes_data:/data docker-notes-app` (changed to port 5001 to avoid conflicts)
+
+5. Challenges and Solutions:  
+   - Reducing the image size was a challenge.  
+     The solution was to use a multi-stage build to copy only the necessary files and dependencies to the final image.  
+   - Ensuring the application was healthy and running correctly.  
+     The solution was to add a health check in the Dockerfile to ensure the app is responsive.
+
+6. Image size before optimization:  
+   - 1.2GB
+
+7. Image size after optimization:  
+   - 90.2MB
